@@ -30,18 +30,18 @@ def create_device_files(devices, points):
     return device_files
 
 
-def main():
-    devices = read_registry(args.c_f_1)
-    points = read_registry(args.c_f_2)
+def main(args):
+    devices = read_registry(args.csv_file_1)
+    points = read_registry(args.csv_file_2)
     device_files = create_device_files(devices, points)
     write_device_files(device_files)
 
 
 if __name__ == "__main__":
     arg_parser = argparse.ArgumentParser()
-    arg_parser.add_argument("c_f_1", type=argparse.FileType('r'),
+    arg_parser.add_argument("csv_file_1", type=argparse.FileType('r'),
                             help="I/P devices.csv")
-    arg_parser.add_argument("c_f_2", type=argparse.FileType('r'),
+    arg_parser.add_argument("csv_file_2", type=argparse.FileType('r'),
                             help="I/P pointlist.csv")
     args = arg_parser.parse_args()
-    main()
+    main(args)
